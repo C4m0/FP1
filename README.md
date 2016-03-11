@@ -56,14 +56,14 @@ The reason I chose to explore TCP was so I could explore the possibility of buil
       (close-input-port client->me))                ;and closes the input port
       (loop))))                                     ;restarts the loop
       
-      ;the client and the server have to be running in two separate instances of Racket. The easiest way to do this (the way I did it)       ;is to open two racket windows and run the server in one window and the client in the other.  This is with the server set as          ;localhost.  The server could be changed to be some other machine by changing the hostname
+      ;the client and the server have to be running in two separate instances of Racket. The easiest way to do this (the way I did it)
+      ;is to open two racket windows and run the server in one window and the client in the other.  This is with the server set as
+      ;localhost.  The server could be changed to be some other machine by changing the hostname
   
 ```
 
 
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
 * output from your code demonstrating what it produced
 * at least one diagram or figure showing your work
 
