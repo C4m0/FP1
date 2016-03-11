@@ -46,24 +46,25 @@ The reason I chose to explore TCP was so I could explore the possibility of buil
       (close-input-port server->me))))                   ;closes the input from the server to the client
 
 (define (server)
-  (let ([listener (tcp-listen SERVICE-PORT)])       ;assigns listener to be a tcp-listen call
-    (let loop()                                     ;starts a loop so that the server can be called more than once without restarting
+  (let ([listener (tcp-listen SERVICE-PORT)]) ;assigns listener to be a tcp-listen call
+    (let loop()                               ;starts a loop so that the server can be called more than once without restarting
       (let-values ([(client->me me->client)         
-                  (tcp-accept listener)])           ;assigns client->me and me->client to be tcp-accept calls
-       ((lambda (x)                                 ;foldl's the list received from the client and returns it to the client
+                  (tcp-accept listener)])     ;assigns client->me and me->client to be tcp-accept calls
+       ((lambda (x)                           ;foldl's the list received from the client and returns it to the client
         (write (foldl + 0 x) me->client))(read client->me))
-      (close-output-port me->client)                ;closes the output
-      (close-input-port client->me))                ;and closes the input port
-      (loop))))                                     ;restarts the loop
+      (close-output-port me->client)          ;closes the output
+      (close-input-port client->me))          ;and closes the input port
+      (loop))))                               ;restarts the loop
       
-      ;the client and the server have to be running in two separate instances of Racket. The easiest way to do this (the way I did it)       ;is to open two racket windows and run the server in one window and the client in the other.  This is with the server set as          ;localhost.  The server could be changed to be some other machine by changing the hostname
+      ;the client and the server have to be running in two separate instances of Racket. 
+      ;The easiest way to do this (the way I did it) is to open two racket windows and run 
+      ;the server in one window and the client in the other.  This is with the server set as
+      ;localhost. The server could be changed to be some other machine by changing the hostname
   
 ```
 
 
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
 * output from your code demonstrating what it produced
 * at least one diagram or figure showing your work
 
